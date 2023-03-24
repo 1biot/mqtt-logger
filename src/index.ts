@@ -144,7 +144,7 @@ export class MqttLogger
     init(defaultCallbacks: Array<MqttCallback> = []): void
     {
         this.assignSignalToLogger([SIGNALS.SIGINT, SIGNALS.SIGTERM, SIGNALS.SIGQUIT])
-        const subscribers = this.config?.subscribe ?? []
+        const subscribers: Array<MqttTopicConfig> = this.config?.subscribe ?? []
         subscribers.forEach((topicConfig: MqttTopicConfig) => {
             const topicConfigWithCallbacks = topicConfig
             topicConfigWithCallbacks.cb = (topicConfigWithCallbacks.cb || []).concat(defaultCallbacks)
@@ -210,8 +210,8 @@ export class MqttLogger
 
     private onConnect()
     {
-        const connection = this.connection
-        const subscribes = this.topics
+        const connection: Client = this.connection
+        const subscribes: Array<MqttTopic> = this.topics
         return () => {
             subscribes.forEach((subscribeTopic: MqttTopic) => {
                 console.log(`Subscribing to topic "${subscribeTopic.topic}"`)
