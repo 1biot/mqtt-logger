@@ -49,6 +49,11 @@ export class MqttTopic
         return this.#skipped
     }
 
+    resetSkippedCount(): void
+    {
+        this.#skipped = 0
+    }
+
     hasCallback(): boolean
     {
         return typeof this.#cb !== 'undefined' && this.#cb.length > 0

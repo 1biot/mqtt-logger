@@ -56,6 +56,9 @@ class MqttTopic {
     skippedCount() {
         return __classPrivateFieldGet(this, _MqttTopic_skipped, "f");
     }
+    resetSkippedCount() {
+        __classPrivateFieldSet(this, _MqttTopic_skipped, 0, "f");
+    }
     hasCallback() {
         return typeof __classPrivateFieldGet(this, _MqttTopic_cb, "f") !== 'undefined' && __classPrivateFieldGet(this, _MqttTopic_cb, "f").length > 0;
     }
